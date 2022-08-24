@@ -93,7 +93,7 @@ moveKeys.forEach(name => {
   moveName.push(name2);
   moveName.push(name3);
   move[name2] = move[name].applyMove(move[name]);
-  move[name3] = move[name].applyMove(move[name].applyMove(move[name]));
+  move[name3] = move[name].applyMove(move[name]).applyMove(move[name]);
 });
 
 
