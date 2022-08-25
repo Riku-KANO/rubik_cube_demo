@@ -159,20 +159,20 @@ class Search {
     return "None";
   }
 
-  prune(depth: number, state: State): boolean {
-    if(depth === 1 && (this._countSolvedCorners(state) < 4) || this._countSolvedEdges(state) < 8) return true;
-    if(depth === 2 && this._countSolvedEdges(state) < 4) return true;
-    if(depth === 3 && this._countSolvedEdges(state) < 2) return true;
+  private prune(depth: number, state: State): boolean {
+    if(depth === 1 && (this.countSolvedCorners(state) < 4) || this.countSolvedEdges(state) < 8) return true;
+    if(depth === 2 && this.countSolvedEdges(state) < 4) return true;
+    if(depth === 3 && this.countSolvedEdges(state) < 2) return true;
     return false;
   }
 
-  _countSolvedCorners(state: State): number {
+  private countSolvedCorners(state: State): number {
     let ret = 0;
     for(let i = 0; i < 8; ++i) if(state.cp[i] == i && state.co[i] == 0) ret++;
     return ret;
   }
 
-  _countSolvedEdges(state: State): number {
+  private countSolvedEdges(state: State): number {
     let ret = 0;
     for(let i = 0; i < 12; ++i) if(state.ep[i] == i && state.eo[i] == 0) ret++;
     return ret;
