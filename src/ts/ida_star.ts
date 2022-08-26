@@ -33,8 +33,8 @@ function isSolved(state: State): boolean {
   var ok = true;
   ok &&= Math.max(...state.eo) === 0;
   ok &&= Math.max(...state.co) === 0;
-  ok &&= state.ep == Array.from({length: 12}, (v, k) => k);
-  ok &&= state.cp == Array.from({length: 12}, (v, k) => k);
+  ok &&= Array.from({length: 12}, (v, k) => k).every((val, index) => {return val == state.ep[index];});
+  ok &&= Array.from({length: 12}, (v, k) => k).evert((val, index) => {return val == state.cp[index];});
   return ok;
 }
 
